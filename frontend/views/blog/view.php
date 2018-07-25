@@ -15,8 +15,8 @@ $sobABC = Abc::find()->select('*')->from('abc')->orderBy('id DESC')->limit(1)->a
 $blogSlide = Blog::find()->select('*')->from('blog')->orderBy('id DESC')->offset(3)->limit(3)->all();
 $blogcategoria = Blog::find()->select('*')->from('blog')->where(['id' => $model->id])->all();
 $blogpost = Blog::find()->select('*')->from('blog')->orderBy('id DESC')->limit(4)->all();
-$contarComent = Comentario::find()->select('*')->from('comentario')->where(['id' => $model->id])->count();
-$blogComentario = Comentario::find()->select('*')->from('comentario')->where(['id' => $model->id])->all();
+$contarComent = Comentario::find()->select('*')->from('comentario')->where(['id_blog' => $model->id])->count();
+$blogComentario = Comentario::find()->select('*')->from('comentario')->where(['id_blog' => $model->id])->all();
 ?>
 <?php $this->beginPage() ?>
 <!doctype html>

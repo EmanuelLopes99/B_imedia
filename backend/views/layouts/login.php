@@ -36,12 +36,12 @@ AppAsset::register($this);
     </div>
 </div>
 
-<footer class="footer">
+<!-- <footer class="footer">
     <div class="container">
         <p class="m-0 text-white">Copyright &copy; Imedia <?= date ('Y') ?> </p>
         <span>Desenvolvido por <a href="http://innovatmedia.com">imedia</a> </span>
     </div>
-</footer>
+</footer> -->
 
 <?php $this->endBody() ?>
 </body>

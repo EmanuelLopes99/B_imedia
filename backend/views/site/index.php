@@ -59,7 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
                       <tbody>
                         <?php foreach ($mostrarPost as $post): ?>
                             <tr>
-                                <td><?php echo $post['nome'] ?></td>
+                                <td><?php echo $post['nomeB'] ?></td>
                                 <td><?php echo $post['categoria'] ?></td>
                                 <td><?= Html::img(Yii::getAlias('@ImgUrl'). '/' .$post['post'],
                                 ['style'=>'width:70px', 'height:55px']) ?>
@@ -88,7 +88,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         </tr> 
                                   </thead>
                                   <tbody>
-                                    <?php foreach ($mostrarComentario as $key => $coment): ?>
+                                    <?php foreach ($mostrarComentario as $coment): ?>
                                         <tr>
                                             <td><?php echo $coment['nome'] ?></td>
                                             <td><?php echo $coment['comentario'] ?></td>

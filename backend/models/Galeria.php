@@ -8,9 +8,6 @@ use Yii;
  * This is the model class for table "galeria".
  *
  * @property int $id
- * @property string $fotografia
- * @property string $videos
- * @property string $projetos
  */
 class Galeria extends \yii\db\ActiveRecord
 {
@@ -28,9 +25,8 @@ class Galeria extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['fotografia', 'videos', 'projetos'], 'required'],
-            [['fotografia', 'videos', 'projetos'], 'string', 'max' => 255],
-            [['fotografia'],'file','extensions' => 'png, jpg, gif'],
+            [['id'], 'required'],
+            [['id'], 'integer'],
         ];
     }
 
@@ -41,9 +37,6 @@ class Galeria extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'fotografia' => 'Fotografia',
-            'videos' => 'Videos',
-            'projetos' => 'Projetos',
         ];
     }
 }

@@ -12,6 +12,7 @@ use app\models\Blog;
  */
 class BlogSearch extends Blog
 {
+    public $search;
     /**
      * @inheritdoc
      */
@@ -19,7 +20,7 @@ class BlogSearch extends Blog
     {
         return [
             [['id'], 'integer'],
-            [['nome', 'categoria', 'descricao', 'post', 'data_blog'], 'safe'],
+            [['nomeB', 'categoria', 'descricao', 'post', 'data_blog','search'], 'safe'],
         ];
     }
 
@@ -59,12 +60,12 @@ class BlogSearch extends Blog
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
+            'id' => $this->search,
             'data_blog' => $this->data_blog,
         ]);
 
-        $query->andFilterWhere(['like', 'nome', $this->nome])
-            ->andFilterWhere(['like', 'categoria', $this->categoria])
+        $query->andFilterWhere(['like', 'nomeB', $this->search])
+            ->andFilterWhere(['like', 'categoria', $this->search])
             ->andFilterWhere(['like', 'descricao', $this->descricao])
             ->andFilterWhere(['like', 'post', $this->post]);
 

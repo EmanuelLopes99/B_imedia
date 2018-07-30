@@ -2,16 +2,16 @@
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use app\models\Abc;
+use app\models\Home;
 use app\models\Blog;
-use app\models\Galeria;
+use app\models\Video;
 
 $this->title = $model->id;
 
-$sobABC = Abc::find()->select('*')->from('abc')->orderBy('id DESC')->limit(1)->all();
+$sobABC = Home::find()->select('*')->from('home')->orderBy('id DESC')->limit(1)->all();
 $blogcategoria = Blog::find()->select('*')->from('blog')->limit(3)->all();
 $blogpost = Blog::find()->select('*')->from('blog')->orderBy('id DESC')->limit(4)->all();
-$galeriaVideo = Galeria::find()->select('*')->from('galeria')->all();
+$galeriaVideo = Video::find()->select('*')->from('video')->orderBy('id DESC')->all();
 ?>
 <?php $this->beginPage() ?>
 <!doctype html>
@@ -50,8 +50,9 @@ $galeriaVideo = Galeria::find()->select('*')->from('galeria')->all();
                             <li><a href="index.php">Home</a></li>
                             <li><a href="<?php echo Url::to(['servicos/index']); ?>">Serviços</a></li>
                             <li><a href="<?php echo Url::to(['about/index']); ?>">Sobre Nós</a></li>
-                            <li><a href="<?php echo Url::to(['site/contact']); ?>">Contactos</a></li>
+                            <li><a href="<?php echo Url::to(['blog/index']); ?>">Blog</a></li>
                             <li><a class="active" href="#">Videos</a></li>
+                            <li><a href="<?php echo Url::to(['site/contact']); ?>">Contactos</a></li>
                         </ul>
 
                         <a href="#" class="open-close-menu" style="display: none;"><i class="fa fa-align-justify"></i></a>
@@ -63,10 +64,10 @@ $galeriaVideo = Galeria::find()->select('*')->from('galeria')->all();
 
         <!---banner-section
             ================================================== -->
-        <section class="page-banner-section blog-banner">
+        <section class="page-banner-section video-banner">
             <div class="container">
                 <div class="page-banner-box">
-                    <h1>Blog</h1>
+                    <h1>Videos</h1>
                 </div>
             </div>
         </section>
@@ -93,7 +94,8 @@ $galeriaVideo = Galeria::find()->select('*')->from('galeria')->all();
                         <div class="sidebar">
                             <div class="search-widget widget">
                                 <form>
-                                    <input type="search" placeholder="Pesquisar ..."/>
+                                    < <input type="search" placeholder="Pesquisar ..."/>
+                                    <?php //echo $this->render('_search', ['model' => $searchModel]); ?>
                                     <button type="submit">
                                         <i class="fa fa-search"></i>
                                     </button>
@@ -122,7 +124,7 @@ $galeriaVideo = Galeria::find()->select('*')->from('galeria')->all();
                                         <li>
                                             <?= Html::img(Url::to(Yii::getAlias('@ImgUrl'). '/'.$post['post']))?> <!-- Pegar imgem do banco -->
                                             <div class="side-content">
-                                                <h2><a href="<?= Url::to(['blog/view', 'id' => $post['id']]) ?>"><?php echo substr($post['nome'], 0, 100) ?></a></h2>
+                                                <h2><a href="<?= Url::to(['blog/view', 'id' => $post['id']]) ?>"><?php echo substr($post['nomeB'], 0, 100) ?></a></h2>
                                                 <span><?php echo $post['data_blog'] ?></span>
                                             </div>
                                         </li>
@@ -146,7 +148,11 @@ $galeriaVideo = Galeria::find()->select('*')->from('galeria')->all();
                         <div class="blog-box">
                             <?php foreach ($galeriaVideo  as $video): ?>
                                 <div class="blog-post">
-                                    <?= Html::img(Url::to(Yii::getAlias('@ImgUrl').'/'.$video['videos'])) ?>
+                                    <??= Html::img(Url::to(Yii::getAlias('@ImgUrl').'/'.$video[''] ))>
+                                    <div class="post-content">
+                                    <h2><?php echo $post['nomeB']?></a></h2>
+                                    <p><?php echo $post['descricao']?></p>
+                                    </div>
                                 </div>
                             <?php endforeach ?>
                         </div>

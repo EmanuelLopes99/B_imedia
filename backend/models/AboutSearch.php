@@ -19,7 +19,7 @@ class AboutSearch extends About
     {
         return [
             [['id'], 'integer'],
-            [['missao', 'filosofia', 'image'], 'safe'],
+            [['missao', 'filosofia'], 'safe'],
         ];
     }
 
@@ -63,8 +63,7 @@ class AboutSearch extends About
         ]);
 
         $query->andFilterWhere(['like', 'missao', $this->missao])
-            ->andFilterWhere(['like', 'filosofia', $this->filosofia])
-            ->andFilterWhere(['like', 'image', $this->image]);
+            ->andFilterWhere(['like', 'filosofia', $this->filosofia]);
 
         return $dataProvider;
     }

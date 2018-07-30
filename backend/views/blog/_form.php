@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
-    <?= $form->field($model, 'nome')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'nomeB')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'categoria')->textInput(['maxlength' => true]) ?>
 

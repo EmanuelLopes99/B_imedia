@@ -33,11 +33,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'missao:ntext',
             'filosofia:ntext',
-            [
-                'attribute' => 'image',
-                'value' => Yii::getAlias('@ImgUrl'). '/' .$model->image,
-                'format' =>['image',['width' => 250, 'height' => 180]],
-            ]
         ],
     ]) ?>
 

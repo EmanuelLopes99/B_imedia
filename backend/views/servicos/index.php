@@ -2,8 +2,8 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use yii\bootstrap\Modal;
-use yii\helpers\Url;
+/*use yii\bootstrap\Modal;
+use yii\helpers\Url;*/
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ServicosSearch */
@@ -20,10 +20,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
  
     <p>
-        <?= Html::button('<i class="glyphicon glyphicon-plus"></i> Serviços', ['value' => Url::to('index.php?r=servicos/create'),'class' => 'btn btn-primary', 'id' => 'modalButton']) ?>
+        <!-- <!?= Html::button('<i class="glyphicon glyphicon-plus"></i> Serviços', ['value' => Url::to('index.php?r=servicos/create'),'class' => 'btn btn-primary', 'id' => 'modalButton']) ?> -->
+        <?= Html::a('<i class="glyphicon glyphicon-plus"></i> Servicos', ['create'], ['class' => 'btn btn-primary'])?>
+        <?= Html::a('<i class="glyphicon glyphicon-plus"></i> Outros', ['outros/index'], ['class' => 'btn btn-primary'])?>
     </p>
 
-    <?php 
+    <!--?php 
         Modal::begin([
         //'header' => '<h4>Comentar</h4>',
             'id' => 'modal',
@@ -31,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ]);
         echo "<div id = 'modalContent'></div>";
         Modal::end();
-    ?>
+    ?-->
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

@@ -1,0 +1,12 @@
+/* configurar htaccess*/
+//indexar a pagian padroa
+DiretoryIndex index.php 404.php
+
+//criando regras
+RewriteEngine On
+
+RewriteCond %(REQUEST_FILENAME) !-f
+RewriteCond %(REQUEST_FILENAME) !-d
+
+//redecionar a pagina sempre para o index
+

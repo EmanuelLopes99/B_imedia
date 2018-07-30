@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::button('<i class="glyphicon glyphicon-plus"></i> Noticias', ['value' => Url::to('index.php?r=noticias/create'),'class' => 'btn btn-primary', 'id' => 'modalButton']) ?>
+         <?= Html::a('<i class="glyphicon glyphicon-plus"></i> Noticias', ['create'], ['class' => 'btn btn-primary']) ?>
     </p>
               
     <?php 
@@ -39,9 +39,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            //'id',
             'titulo',
-            'descricao:ntext',
+            [
+                'filter' => false,
+                'attribute' => 'descricao',
+            ],
+            'data',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

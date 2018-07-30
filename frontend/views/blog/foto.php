@@ -2,16 +2,16 @@
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use app\models\Abc;
+use app\models\Home;
 use app\models\Blog;
-use app\models\Galeria;
+use app\models\Fotografia;
 
 $this->title = $model->id;
 
-$sobABC = Abc::find()->select('*')->from('abc')->orderBy('id DESC')->limit(1)->all();
+$sobABC = Home::find()->select('*')->from('home')->orderBy('id DESC')->limit(1)->all();
 $blogcategoria = Blog::find()->select('*')->from('blog')->limit(3)->all();
 $blogpost = Blog::find()->select('*')->from('blog')->orderBy('id DESC')->limit(4)->all();
-$galeriaFoto = Galeria::find()->select('*')->from('galeria')->all();
+$galeriaFoto = Fotografia::find()->select('*')->from('fotografia')->orderBy('id DESC')->all();
 ?>
 <?php $this->beginPage() ?>
 <!doctype html>
@@ -50,8 +50,9 @@ $galeriaFoto = Galeria::find()->select('*')->from('galeria')->all();
                             <li><a href="index.php">Home</a></li>
                             <li><a href="<?php echo Url::to(['servicos/index']); ?>">Serviços</a></li>
                             <li><a href="<?php echo Url::to(['about/index']); ?>">Sobre Nós</a></li>
-                            <li><a href="<?php echo Url::to(['site/contact']); ?>">Contactos</a></li>
+                            <li><a href="<?php echo Url::to(['blog/index']); ?>">Blog</a></li>
                             <li><a class="active" href="#">Fotografia</a></li>
+                            <li><a href="<?php echo Url::to(['site/contact']); ?>">Contactos</a></li>
                         </ul>
 
                         <a href="#" class="open-close-menu" style="display: none;"><i class="fa fa-align-justify"></i></a>
@@ -66,7 +67,7 @@ $galeriaFoto = Galeria::find()->select('*')->from('galeria')->all();
         <section class="page-banner-section blog-banner">
             <div class="container">
                 <div class="page-banner-box">
-                    <h1>Blog</h1>
+                    <h1>Fotografias</h1>
                 </div>
             </div>
         </section>
@@ -122,7 +123,7 @@ $galeriaFoto = Galeria::find()->select('*')->from('galeria')->all();
                                         <li>
                                             <?= Html::img(Url::to(Yii::getAlias('@ImgUrl'). '/'.$post['post']))?> <!-- Pegar imgem do banco -->
                                             <div class="side-content">
-                                                <h2><a href="<?= Url::to(['blog/view', 'id' => $post['id']]) ?>"><?php echo substr($post['nome'], 0, 100) ?></a></h2>
+                                                <h2><a href="<?= Url::to(['blog/view', 'id' => $post['id']]) ?>"><?php echo substr($post['nomeB'], 0, 100) ?></a></h2>
                                                 <span><?php echo $post['data_blog'] ?></span>
                                             </div>
                                         </li>
@@ -146,7 +147,11 @@ $galeriaFoto = Galeria::find()->select('*')->from('galeria')->all();
                         <div class="blog-box">
                             <?php foreach ($galeriaFoto  as $foto): ?>
                                 <div class="blog-post">
-                                    <?= Html::img(Url::to(Yii::getAlias('@ImgUrl').'/'.$foto['fotografia'])) ?>
+                                    <?= Html::img(Url::to(Yii::getAlias('@ImgUrl').'/'.$foto['image'])) ?>
+                                    <div class="post-content">
+                                    <h2><?php echo $post['nomeB']?></a></h2>
+                                    <p><?php echo $post['descricao']?></p>
+                                    </div>
                                 </div>
                             <?php endforeach ?>
                         </div>

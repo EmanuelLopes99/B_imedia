@@ -8,8 +8,6 @@ use app\models\GaleriaSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\UploadedFile;
-use yii\data\ActiveDataProvider;
 
 /**
  * GaleriaController implements the CRUD actions for Galeria model.
@@ -40,14 +38,6 @@ class GaleriaController extends Controller
         $searchModel = new GaleriaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        $query = Galeria::find();
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-            'pagination' => [
-                'pageSize' => 5,
-            ]
-        ]);
-        
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -76,27 +66,11 @@ class GaleriaController extends Controller
     {
         $model = new Galeria();
 
-        if ($model->load(Yii::$app->request->post())) {
-            $images= UploadedFile::getInstance($model, 'fotografia');
-            $ImgName = $images->baseName. '.' .$images->extension;
-            $images->saveAs(Yii::getAlias('@ImgPath'). '/' .$ImgName);
-            $model->fotografia = $ImgName;
-
-            $videos= UploadedFile::getInstance($model, 'videos');
-            $videoName = $videos->baseName. '.' .$videos->extension;
-            $videos->saveAs(Yii::getAlias('@ImgPath'). '/' .$videoName);
-            $model->videos = $videoName;
-
-            $projeetos= UploadedFile::getInstance($model, 'projetos');
-            $projName = $projeetos->baseName. '.' .$projeetos->extension;
-            $projeetos->saveAs(Yii::getAlias('@ImgPath'). '/' .$projName);
-            $model->projetos = $projName;
-            
-            $model->save();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
-        return $this->renderAjax('create', [
+        return $this->render('create', [
             'model' => $model,
         ]);
     }

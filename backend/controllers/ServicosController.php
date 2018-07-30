@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\data\ActiveDataProvider;
+use yii\web\UploadedFile;
 /**
  * ServicosController implements the CRUD actions for Servicos model.
  */
@@ -85,7 +86,7 @@ class ServicosController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
-        return $this->renderAjax('create', [
+        return $this->render('create', [
             'model' => $model,
         ]);
     }
@@ -101,7 +102,14 @@ class ServicosController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+       if ($model->load(Yii::$app->request->post())) {
+            //$model->save();
+            $images= UploadedFile::getInstance($model, 'icon');
+            $ImgName = $images->baseName. '.' .$images->extension;
+            $images->saveAs(Yii::getAlias('@ImgPath'). '/' .$ImgName);
+            $model->icon = $ImgName;
+            $model->save();
+            
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

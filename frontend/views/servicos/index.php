@@ -1,5 +1,5 @@
 <?php
-use app\models\Abc;
+use app\models\Home;
 use app\models\Blog;
 use app\models\Servicos;
 use app\models\Noticias;
@@ -7,7 +7,7 @@ use app\models\Outros;
 use yii\helpers\Url;
 use yii\helpers\Html;
 
-$sobABC = Abc::find()->select('*')->from('abc')->orderBy('id DESC')->limit(1)->all();
+$sobABC = Home::find()->select('*')->from('home')->orderBy('id DESC')->limit(1)->all();
 $outrosDados = Outros::find()->select('*')->from('outros')->orderBy('id DESC')->limit(1)->all();
 $servicos = Servicos::find()->select('*')->from('servicos')->orderBy('id DESC')->limit(6)->all();
 
@@ -51,8 +51,8 @@ $servicos = Servicos::find()->select('*')->from('servicos')->orderBy('id DESC')-
                             <li><a href="index.php">Home</a></li>
                             <li><a class="active" href="<?php echo Url::to(['servicos/index']); ?>">Serviços</a></li>
                             <li><a href="<?php echo Url::to(['about/index']); ?>">Sobre Nós</a></li>
-                            <li><a href="<?php echo Url::to(['site/contact']); ?>">Contactos</a></li>
                             <li><a href="<?php echo Url::to(['blog/index']); ?>">Blog</a></li>
+                            <li><a href="<?php echo Url::to(['site/contact']); ?>">Contactos</a></li>
                     </ul>
                         </ul>
                         <a href="#" class="open-close-menu" style="display: none;"><i class="fa fa-align-justify"></i></a>
@@ -96,8 +96,8 @@ $servicos = Servicos::find()->select('*')->from('servicos')->orderBy('id DESC')-
                         <div class="col-lg-6">
                             <div class="services-post">
                                 <div class="services-content">
-                                    <h2><span class="lnr lnr-cog"></span><?php echo $servec['nome'] ?></h2>
-                                    <p><?php echo substr($servec['descricao'],0, 250) ?> </p>
+                                    <h2><span><?= Html::img(Url::to(Yii::getAlias('@ImgUrl').'/'.$servec['icon']), ['style' => 'width: 40px']) ?></span><?php echo $servec['nome'] ?></h2>
+                                    <p><?php echo $servec['descricao'] ?> </p>
                                 </div>
                             </div>
                         </div>
@@ -105,10 +105,10 @@ $servicos = Servicos::find()->select('*')->from('servicos')->orderBy('id DESC')-
                     </div>
                 </div>
                 
-                <div class="center-area">
+                <div class="center-area" >
                     <h1>Nós fornecemos melhores soluções</h1>
                     <?php foreach ($outrosDados as $soluc): ?>
-                        <p> <?php echo $soluc['solucoes'] ?></p>
+                        <p style="text-align: center" > <?php echo $soluc['solucoes'] ?></p>
                         <a class="button-one" href="<?php echo Url::to(['contacto/index']); ?>">Contacte-nos</a>
                     <?php endforeach ?>
                 </div>

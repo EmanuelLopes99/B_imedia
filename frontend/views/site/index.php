@@ -1,13 +1,15 @@
 <?php
 use yii\helpers\Html;
 use yii\helpers\Url;
-use app\models\Abc;
+use app\models\Home;
 use app\models\Servicos;
 use app\models\Noticias;
+use app\models\Homelogo;
 
-$sobABC = Abc::find()->select('*')->from('abc')->orderBy('id DESC')->limit(1)->all();
+$sobABC = Home::find()->select('*')->from('home')->orderBy('id DESC')->limit(1)->all();
 $noticias = Noticias::find()->select('*')->from('noticias')->orderBy('id DESC')->limit(3)->all();
-$servicos = Servicos::find()->select('*')->from('servicos')->orderBy('id DESC')->limit(6)->all();
+$servicos = Servicos::find()->select('*')->from('servicos')->orderBy('id DESC')->limit(4)->all();
+$logoHome = Homelogo::find()->select('*')->from('homelogo')->orderBy('id DESC')->limit(3)->all();
 ?>
 
      <!-- Header
@@ -29,8 +31,8 @@ $servicos = Servicos::find()->select('*')->from('servicos')->orderBy('id DESC')-
                         <li><a class="active" href="index.php">Home</a></li>
                         <li><a href="<?php echo Url::to(['servicos/index']); ?>">Serviços</a></li>
                         <li><a href="<?php echo Url::to(['about/index']); ?>">Sobre Nós</a></li>
-                        <li><a href="<?php echo Url::to(['site/contact']); ?>">Contactos</a></li>
                         <li><a href="<?php echo Url::to(['blog/index']); ?>">Blog</a></li>
+                        <li><a href="<?php echo Url::to(['site/contact']); ?>">Contactos</a></li>
                     </ul>
                     <a href="#" class="open-close-menu" style="display: none;"><i class="fa fa-align-justify"></i></a>
                 </div>
@@ -249,22 +251,13 @@ $servicos = Servicos::find()->select('*')->from('servicos')->orderBy('id DESC')-
         <div class="container">
             <div class="feature-box">
                 <div class="row">
-                    <div class="col-lg-4">
-                        <div class="feature-post">
-                            <?php echo Html::img("@web/images/imediaa.png", ['style'=> 'width: 150px;'])?>
-
+                    <?php foreach ($logoHome as $homeL): ?>
+                        <div class="col-lg-4">
+                            <div class="feature-post">
+                               <?php echo Html::img(Url::to(Yii::getAlias('@ImgUrl').'/'.$homeL['logos']), ['style'=> 'width: 150px;'])?>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="feature-post">
-                           <?php echo Html::img("@web/images/frutpao.png", ['style'=> 'width: 300px;'])?>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="feature-post">
-                           <?php echo Html::img("@web/images/imoafrica.jpg", ['style'=> 'width: 300px;'])?>
-                        </div>
-                    </div>
+                     <?php endforeach ?>
                 </div>
             </div>
         </div>
@@ -294,8 +287,8 @@ $servicos = Servicos::find()->select('*')->from('servicos')->orderBy('id DESC')-
                         <div class="col-lg-6">
                             <div class="services-post">
                                 <div class="services-content">
-                                    <h2><span class=""></span><?php echo $servec['nome'] ?></h2>
-                                    <p><?php echo substr($servec['descricao'],0, 250) ?></p>
+                                    <h2><span><?= Html::img(Url::to(Yii::getAlias('@ImgUrl').'/'.$servec['icon']), ['style' => 'width: 40px']) ?>&nbsp;</span><?php echo $servec['nome'] ?></h2>
+                                    <p><?php echo $servec['descricao'] ?></p>
                                 </div>
                             </div>
                         </div>
@@ -337,8 +330,7 @@ $servicos = Servicos::find()->select('*')->from('servicos')->orderBy('id DESC')-
                             <div class="post">
                                 <h2>A nossa Visão</h2>
                                 <p style="text-align:center;"><?php echo substr($visao['visao'],0, 200) ?>
-                                    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                                    <a href="#">Ver esse factores</a></p>
+                                    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
                                 <?php echo Html::img('@web/upload/others/5.jpg') ?>
                                 <h2></h2>
                                 <a href="#"></a>
@@ -380,11 +372,11 @@ $servicos = Servicos::find()->select('*')->from('servicos')->orderBy('id DESC')-
                         <div class="item">
                             <div class="news-post">
                                 <p class="auth-paragraph">
-                                    by <a href="#">Admin</a>, <?php echo $not['data'] ?>
+                                    by <a href="#">Admin,&nbsp; <?php echo $not['data'] ?></a>
                                 </p>
-                                <h2><a href="#"><?php echo $not['titulo'] ?></a></h2>
-                                <p><?php echo $not['descricao'] ?></p>
-                                <a href="single-post.html">Continue reading</a>
+                                <h2 id="noticias"><a href="<?php echo Url::to(['noticias/view', 'id' => $not['id']]) ?>"><?php echo $not['titulo'] ?></a></h2>
+                                <p><?php echo substr($not['descricao'],0 ,150) ?> ...</p>
+                                <a href="<?= Url::to(['noticias/view', 'id' => $not['id']]) ?>">Continuar a Ler</a>
                             </div>
                         </div>
                     <?php endforeach ?>

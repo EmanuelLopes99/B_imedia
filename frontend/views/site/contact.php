@@ -5,9 +5,11 @@ use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 use yii\helpers\Url;
 use frontend\assets\AppAsset;
-use app\models\Abc;
+use app\models\Home;
+use app\models\Contact;
 
-$sobABC = Abc::find()->select('*')->from('abc')->orderBy('id DESC')->limit(1)->all();
+$sobABC = Home::find()->select('*')->from('home')->orderBy('id DESC')->limit(1)->all();
+$sobContact = Contact::find()->select('*')->from('contact')->orderBy('id DESC')->limit(1)->all();
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -50,8 +52,8 @@ AppAsset::register($this);
                             <li><a href="index.php">Home</a></li>
                             <li><a href="<?php echo Url::to(['servicos/index']); ?>">Serviços</a></li>
                             <li><a href="<?php echo Url::to(['about/index']); ?>">Sobre Nós</a></li>
-                            <li><a class="active" href="<?php echo Url::to(['site/contact']); ?>">Contactos</a></li>
                             <li><a href="<?php echo Url::to(['blog/index']); ?>">Blog</a></li>
+                            <li><a class="active" href="<?php echo Url::to(['site/contact']); ?>">Contactos</a></li>
                         </ul>
                         <a href="#" class="open-close-menu" style="display: none;"><i class="fa fa-align-justify"></i></a>
                     </div>
@@ -98,13 +100,13 @@ AppAsset::register($this);
                          <div class="col-md-4">
                             <div class="contact-details">
                                 <h2>Sobre ABC</h2>
-                                <?php foreach ($sobABC as $contact): ?>
-                                     <p> <?php echo substr($contact['missao'],0, 200) ?> ...</p>
+                                <?php foreach ($sobABC as $home): ?>
+                                     <p> <?php echo $home['missao'] ?></p>
                                 <?php endforeach ?>
                             </div>
                             <div class="contact-details">
                                 <h2>Contactos detalhados</h2>
-                                <?php foreach ($sobABC as $contact): ?>
+                                <?php foreach ($sobContact as $contact): ?>
                                     <ul class="info-list">
                                         <li>
                                             <i class="fa fa-map-marker"></i>

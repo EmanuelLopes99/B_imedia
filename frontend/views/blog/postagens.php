@@ -44,8 +44,8 @@ $blogcategoria = Blog::find()->select('*')->from('blog')->all();
                             <li><a href="index.php">Home</a></li>
                             <li><a href="<?php echo Url::to(['servicos/index']); ?>">Serviços</a></li>
                             <li><a href="<?php echo Url::to(['about/index']); ?>">Sobre Nós</a></li>
-                            <li><a href="<?php echo Url::to(['site/contact']); ?>">Contactos</a></li>
                             <li><a class="active" href="<?php echo Url::to(['blog/postagens']); ?>">Posts</a></li>
+                            <li><a href="<?php echo Url::to(['site/contact']); ?>">Contactos</a></li>
                         </ul>
 
                         <a href="#" class="open-close-menu" style="display: none;"><i class="fa fa-align-justify"></i></a>
@@ -90,7 +90,7 @@ $blogcategoria = Blog::find()->select('*')->from('blog')->all();
                         <div class="blog-post">
                             <?= Html::img(Url::to(Yii::getAlias('@ImgUrl'). '/'.$post['post']))?>
                                 <div class="post-content">
-                                    <h3><a href="<?= Url::to(['blog/view', 'id' => $post['id']]) ?>"><?php echo$post['nome'] ?></a></h3><!-- Ver todos os dados do blog numa view ta certo kkk -->
+                                    <h3><a href="<?= Url::to(['blog/view', 'id' => $post['id']]) ?>"><?php echo$post['nomeB'] ?></a></h3><!-- Ver todos os dados do blog numa view ta certo kkk -->
                                     <p><?php echo substr($post['descricao'], 0, 100) ?> ...</p>
                                 </div>
                         </div> 

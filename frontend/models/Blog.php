@@ -30,10 +30,10 @@ class Blog extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome', 'categoria', 'descricao', 'post'], 'required'],
+            [['nomeB', 'categoria', 'descricao', 'post'], 'required'],
             [['descricao'], 'string'],
             [['data_blog'], 'safe'],
-            [['nome'], 'string', 'max' => 200],
+            [['nomeB'], 'string', 'max' => 200],
             [['categoria'], 'string', 'max' => 100],
             [['post'], 'string', 'max' => 255],
             [['post'],'file','extensions' => 'png, jpg, gif'],
@@ -47,7 +47,7 @@ class Blog extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'Id Blog',
-            'nome' => 'Nome',
+            'nomeB' => 'Nome',
             'categoria' => 'Categória',
             'descricao' => 'Descrição',
             'post' => 'Post',

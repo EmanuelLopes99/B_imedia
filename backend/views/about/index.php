@@ -20,7 +20,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
  
     <p>
-        <?= Html::button('<i class="glyphicon glyphicon-plus"></i> About', ['value' => Url::to('index.php?r=about/create'),'class' => 'btn btn-primary', 'id' => 'modalButton']) ?>
+       <!--  <!?= Html::button('<i class="glyphicon glyphicon-plus"></i> About', ['value' => Url::to('index.php?r=about/create'),'class' => 'btn btn-primary', 'id' => 'modalButton']) ?>
+         <!?= Html::button('<i class="glyphicon glyphicon-plus"></i> Equipe', ['value' => Url::to('index.php?r=equipe/create'),'class' => 'btn btn-primary', 'id' => 'modalButton']) ?> -->
+         <?= Html::a('<i class="glyphicon glyphicon-plus"></i> Abouts', ['create'], ['class' => 'btn btn-primary']) ?>
+         <?= Html::a('<i class="glyphicon glyphicon-plus"></i> Equipas', ['equipe/index'], ['class' => 'btn btn-primary'])?>
+         <?= Html::a('<i class="glyphicon glyphicon-plus"></i> Images', ['imagens/index'], ['class' => 'btn btn-primary'])?>
     </p>
 
     <?php 
@@ -42,16 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'id',
             'missao:ntext',
             'filosofia:ntext',
-             [
-                'filter' => false,
-                'attribute' => 'image',
-                'format' => 'html',
-                'value' => function($model){
-                    return Html::img(Yii::getAlias('@ImgUrl'). '/' .$model->image,
-                    ['width' => 70, 'height' => 55]);
-                },
-            ],
-
+            
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

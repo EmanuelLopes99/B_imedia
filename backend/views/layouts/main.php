@@ -65,7 +65,7 @@ $contarComentarios = $querys->select('*')->from('comentario')->count();//fim da 
     ?>
 
      <!--Cabecalho da pagina-->
-    <header id="header">
+    <header id="header" style="background: #000">
       <div class="container">
         <div class="row">
           <div class="col-md-10">
@@ -75,7 +75,7 @@ $contarComentarios = $querys->select('*')->from('comentario')->count();//fim da 
           <!--Criar button Post-->
           <div class="col-md-2">
             <div class="dropdown create">
-              <a href="index.php?r=post/index">
+              <a href="index.php?r=blog/index">
                 <button class="btn btn-default navbar-right" type="button"> Criar Posts</button>
               </a>
             </div>
@@ -103,41 +103,32 @@ $contarComentarios = $querys->select('*')->from('comentario')->count();//fim da 
                 <a href="index.php" class="list-group-item active ">
                   <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
                 </a>
-                 <a href="index.php?r=abc/index" class="list-group-item"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                   ABC <span class="badge"></span>
+                <a href="index.php?r=home/index" class="list-group-item"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                   Home <span class="badge"></span>
                  </a>
-                 <a href="index.php?r=servicos/index" class="list-group-item"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                 <a href="index.php?r=servicos/index" class="list-group-item"><span class="glyphicon glyphicon-leaf" aria-hidden="true"></span>
                    Serviços <span class="badge"></span>
                  </a>
-                 <a href="index.php?r=about/index" class="list-group-item"><span class="far fa-file-alt"  are-hidden="true"></span>
-                    Sobre Nós<span class="badge"></span>
+                 <a href="index.php?r=about/index" class="list-group-item"><span class="glyphicon glyphicon-tint" aria-hidden="true"></span>
+                   About <span class="badge"></span>
                  </a>
-                 <a class="list-group-item" href="index.php?r=equipe/index"><span class="glyphicons glyphicons-group" aria-hidden="true"></span> 
-                   Equipes
-                </a>
-                <a href="index.php?r=subscricao/index" class="list-group-item"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                   Subscrição <span class="badge"></span>
+                 <a href="index.php?r=contact/index" class="list-group-item"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+                   Contacto <span class="badge"></span>
                  </a>
-                 <a class="list-group-item" href="index.php?r=galeria/index"><i class="glyphicon glyphicon-picture"  are-hidden="true"></i> 
+                <a class="list-group-item" href="index.php?r=galeria/index"><i class="glyphicon glyphicon-picture"  are-hidden="true"></i> 
                    Galerias 
                 </a>
-                <a class="list-group-item" href="index.php?r=noticias/index"><i class="glyphicon glyphicon-picture"  are-hidden="true"></i> 
-                   Noticias 
-                </a>
-                <a href="index.php?r=outros/index" class="list-group-item"><span class="glyphicon glyphicons-user-structure" aria-hidden="true"></span>
-                  Outros <span class="badge"></span>
-                </a>
-                 <a href="index.php?r=comentario/index" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
-                   Comentario <span class="badge"><?php print_r($contarComentarios) ?></span>
-                 </a>
                  <a href="index.php?r=blog/index" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                    Blogs <span class="badge"><?php print_r($contarPost) ?></span>
+                 </a>
+                 <a href="index.php?r=comentario/index" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                   Comentarios <span class="badge"><?php print_r($contarComentarios) ?></span>
                  </a>
                   <a href="index.php?r=user/index" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                    Usuarios <span class="badge"><?php print_r($contarUsuario) ?></span>
                  </a>
               </div>
-
+              
               <div class="well">
                 <h4>Posts Visitados</h4>
                 <div class="progress">
@@ -154,7 +145,6 @@ $contarComentarios = $querys->select('*')->from('comentario')->count();//fim da 
               </div>
           </div>
           <div class="col-md-9">
-             <?= Alert::widget() ?>
              <?= $content ?>
            </div>
         </div>

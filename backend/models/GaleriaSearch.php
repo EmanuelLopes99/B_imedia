@@ -19,7 +19,6 @@ class GaleriaSearch extends Galeria
     {
         return [
             [['id'], 'integer'],
-            [['fotografia', 'videos', 'projetos'], 'safe'],
         ];
     }
 
@@ -61,10 +60,6 @@ class GaleriaSearch extends Galeria
         $query->andFilterWhere([
             'id' => $this->id,
         ]);
-
-        $query->andFilterWhere(['like', 'fotografia', $this->fotografia])
-            ->andFilterWhere(['like', 'videos', $this->videos])
-            ->andFilterWhere(['like', 'projetos', $this->projetos]);
 
         return $dataProvider;
     }

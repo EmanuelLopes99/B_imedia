@@ -20,7 +20,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::button('<i class="glyphicon glyphicon-plus"></i> Blog', ['value' => Url::to('index.php?r=blog/create'),'class' => 'btn btn-primary', 'id' => 'modalButton']) ?>
+        <!-- <!?= Html::button('<i class="glyphicon glyphicon-plus"></i> Blog', ['value' => Url::to('index.php?r=blog/create'),'class' => 'btn btn-primary', 'id' => 'modalButton']) ?> -->
+        <?= Html::a('<i class="glyphicon glyphicon-plus"></i> Blogs', ['create'], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?php 
@@ -40,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             //'id',
-            'nome',
+            'nomeB',
             'categoria',
             'descricao:ntext',
              [

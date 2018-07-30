@@ -5,11 +5,13 @@ use frontend\assets\AppAsset;
 use app\models\About;
 use app\models\Equipe;
 use app\models\Outros;
+use app\models\Imagens;
 
 $SobAbout = About::find()->select('*')->from('about')->orderBy('id DESC')->limit(1)->all();
 $aboutImg = About::find()->select('*')->from('about')->orderBy('id DESC')->limit(3)->all();
 $SobEquipa = Equipe::find()->select('*')->from('equipe')->orderBy('id DESC')->limit(4)->all();
 $SobOutros = Outros::find()->select('*')->from('outros')->orderBy('id DESC')->limit(1)->all();
+$sobImg = Imagens::find()->select('*')->from('imagens')->orderBy('id DESC')->limit(3)->all();
 ?>
 <?php $this->beginPage() ?>
 <!doctype html>
@@ -52,8 +54,8 @@ $SobOutros = Outros::find()->select('*')->from('outros')->orderBy('id DESC')->li
                             <li><a href="index.php">Home</a></li>
                             <li><a href="<?php echo Url::to(['servicos/index']); ?>">Serviços</a></li>
                             <li><a class="active" href="<?php echo Url::to(['about/index']); ?>">Sobre Nós</a></li>
-                            <li><a href="<?php echo Url::to(['site/contact']); ?>">Contactos</a></li>
                             <li><a href="<?php echo Url::to(['blog/index']); ?>">Blog</a></li>
+                            <li><a href="<?php echo Url::to(['site/contact']); ?>">Contactos</a></li>
                         </ul>
                         <a href="#" class="open-close-menu" style="display: none;"><i class="fa fa-align-justify"></i></a>
                     </div>
@@ -112,10 +114,10 @@ $SobOutros = Outros::find()->select('*')->from('outros')->orderBy('id DESC')->li
 
                 <div class="about-box">
                     <div class="row">
-                         <?php foreach ($aboutImg as $img): ?>
+                         <?php foreach ($sobImg as $img): ?>
                             <div class="col-md-4">
                                 <div class="about-post-image">
-                                    <?= Html::img(Url::to(Yii::getAlias('@ImgUrl'). '/'.$img['image']))?>
+                                    <?= Html::img(Url::to(Yii::getAlias('@ImgUrl'). '/'.$img['images']))?>
                                 </div>
                             </div>
                         <?php endforeach ?>
@@ -173,11 +175,9 @@ $SobOutros = Outros::find()->select('*')->from('outros')->orderBy('id DESC')->li
                 <h2 class="text-center">-- Nossos Clientes --</h2>
                 <ul class="client-list">
                     <p>Espaço para os clientes</p>
-                <!--
-                    <li><a href="#"><img src="images/imediaa.png" alt=""style="width:85px;"></a></li>
-                    <li><a href="#"><img src="images/frutpao.png" alt=""style="width:1000px;"></a></li>
-                    <li><a href="#"><img src="images/imoafrica.jpg" alt=""></a></li>
-                -->
+                    <?php echo Html::img("@web/image/logo-imedia1.png")?>
+                    <?php echo Html::img("@web/image/logo-frut&pao1.png")?>
+                    <?php echo Html::img("@web/image/logo-imoafrica1.png")?>
                 </ul>
             </div>
         </section>

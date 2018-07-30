@@ -6,19 +6,25 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use frontend\assets\AppAsset;
-use app\models\Abc;
+use app\models\Home;
 use app\models\Blog;
 use app\models\Servicos;
 use app\models\Noticias;
+use app\models\Contact;
+use yii\bootstrap\ActiveForm;
 
-
-$sobABC = Abc::find()->select('*')->from('abc')->orderBy('id DESC')->limit(1)->all();
+$sobABC = Home::find()->select('*')->from('home')->orderBy('id DESC')->limit(1)->all();
+$sobContact = Contact::find()->select('*')->from('contact')->orderBy('id DESC')->limit(1)->all();
 $postRecente = Blog::find()->select('*')->from('blog')->orderBy('id DESC')->limit(3)->all();
 $postImagem = Blog::find()->select('*')->from('blog')->orderBy('id DESC')->limit(6)->all();
 $noticiasR = Noticias::find()->select('*')->from('noticias')->orderBy('id DESC')->limit(1)->all();
 
-//AppAsset::register($this);
+/*$subscricao = new Subscricao();
+if($subscricao->load(Yii::$app->request->post())){
+    $subscricao->save();
+}*/
 ?>
+
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -64,7 +70,7 @@ $noticiasR = Noticias::find()->select('*')->from('noticias')->orderBy('id DESC')
                         <div class="col-lg-3 col-md-6">
                             <div class="footer-widget text-widget"><!-- Sobre ABC -->
                                 <h2>Nós ABC</h2>
-                                    <?php foreach ($sobABC  as $abc): ?>
+                                    <?php foreach ($sobContact  as $abc): ?>
                                         <p><?php echo $abc['endereco'] ?> <br>
                                     <?php echo $abc['telefone'] ?></p>
                                 <?php endforeach ?>
@@ -88,7 +94,7 @@ $noticiasR = Noticias::find()->select('*')->from('noticias')->orderBy('id DESC')
                                     <ul class="recent-posts">
                                         <?php foreach ($postRecente  as $posts): ?>
                                         <li>
-                                            <h2><a href="<?= Url::to(['blog/view', 'id' => $posts['id']]) ?>"><?php echo $posts['nome'] ?> </a></h2><!-- Ver todos os comentarios desse post -->
+                                            <h2><a href="<?= Url::to(['blog/view', 'id' => $posts['id']]) ?>"><?php echo $posts['nomeB'] ?> </a></h2><!-- Ver todos os comentarios desse post -->
                                         </li>
                                          <?php endforeach ?>
                                     </ul>
@@ -108,14 +114,17 @@ $noticiasR = Noticias::find()->select('*')->from('noticias')->orderBy('id DESC')
 
                         <div class="col-lg-3 col-md-6">
                             <div class="footer-widget newsletter-widget">
-                                <h3>Notícias</h3>
+                                <h3>Ultimas Notícias</h3>
                                    <?php foreach ($noticiasR  as $notic): ?>
-                                       <a href="#"> <p><?php echo substr($notic['descricao'],0,200) ?>...</p></a>
+                                       <a href="<?php echo Url::to(['noticias/view', 'id' => $notic['id']]) ?>"> <p><?php echo substr($notic['descricao'],0,150) ?> ...</p></a>
                                     <?php endforeach ?>
-                                    <form class="subscribe">
-                                        <input type="text" name="email-sub" id="email-sub" placeholder="email" />
-                                        <input type="submit" name="submit-sub" id="submit-sub" value="Enviar" />
-                                    </form>
+                                    <!--?php $form = ActiveForm::begin(); ?>
+                                        <div class="col-lg-12 ">
+                                        <!?= $form->field($subscricao, 'email')->textInput() ?>
+                                        <div class="form-group">
+                                            <!?= Html::submitButton('Enviar', ['class' => 'btn btn-primary']) ?>
+                                        </div> </div>
+                                    <!?php ActiveForm::end() ?-->
                             </div>
                         </div>
 

@@ -19,7 +19,7 @@ class BlogSearch extends Blog
     {
         return [
             [['id'], 'integer'],
-            [['nome', 'categoria', 'descricao', 'post', 'data_blog'], 'safe'],
+            [['nomeB', 'categoria', 'descricao', 'post', 'data_blog'], 'safe'],
         ];
     }
 
@@ -63,7 +63,7 @@ class BlogSearch extends Blog
             'data_blog' => $this->data_blog,
         ]);
 
-        $query->andFilterWhere(['like', 'nome', $this->nome])
+        $query->andFilterWhere(['like', 'nomeB', $this->nomeB])
             ->andFilterWhere(['like', 'categoria', $this->categoria])
             ->andFilterWhere(['like', 'descricao', $this->descricao])
             ->andFilterWhere(['like', 'post', $this->post]);

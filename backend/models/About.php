@@ -28,10 +28,8 @@ class About extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['missao', 'filosofia', 'image'], 'required'],
+            [['missao', 'filosofia'], 'required'],
             [['missao', 'filosofia'], 'string'],
-            [['image'], 'string', 'max' => 255],
-            [['image'],'file','extensions' => 'png, jpg, gif'],
         ];
     }
 
@@ -44,7 +42,6 @@ class About extends \yii\db\ActiveRecord
             'id' => 'ID',
             'missao' => 'Missão',
             'filosofia' => 'Filosofia',
-            'image' => 'Image',
         ];
     }
 }

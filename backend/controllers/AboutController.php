@@ -76,18 +76,11 @@ class AboutController extends Controller
     {
         $model = new About();
 
-        if ($model->load(Yii::$app->request->post())) {
-            //$model->save();
-            $images= UploadedFile::getInstance($model, 'image');
-            $ImgName = $images->baseName. '.' .$images->extension;
-            $images->saveAs(Yii::getAlias('@ImgPath'). '/' .$ImgName);
-            $model->image = $ImgName;
-            $model->save();
-
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
-        return $this->renderAjax('create', [
+        return $this->render('create', [
             'model' => $model,
         ]);
     }

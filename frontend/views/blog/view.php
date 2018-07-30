@@ -2,7 +2,7 @@
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use app\models\Abc;
+use app\models\Home;
 use app\models\Blog;
 use app\models\Comentario;
 use frontend\assets\AppAsset;
@@ -11,7 +11,7 @@ use frontend\assets\AppAsset;
 
 $this->title = $model->id;
 
-$sobABC = Abc::find()->select('*')->from('abc')->orderBy('id DESC')->limit(1)->all();
+$sobABC = Home::find()->select('*')->from('home')->orderBy('id DESC')->limit(1)->all();
 $blogSlide = Blog::find()->select('*')->from('blog')->orderBy('id DESC')->offset(3)->limit(3)->all();
 $blogcategoria = Blog::find()->select('*')->from('blog')->where(['id' => $model->id])->all();
 $blogpost = Blog::find()->select('*')->from('blog')->orderBy('id DESC')->limit(4)->all();
@@ -55,8 +55,9 @@ $blogComentario = Comentario::find()->select('*')->from('comentario')->where(['i
                             <li><a href="index.php">Home</a></li>
                             <li><a href="<?php echo Url::to(['servicos/index']); ?>">Serviços</a></li>
                             <li><a href="<?php echo Url::to(['about/index']); ?>">Sobre Nós</a></li>
+                            <li><a href="<?php echo Url::to(['blog/index']); ?>">Blog</a></li>
+                             <li><a class="active" href="#">View</a></li>
                             <li><a href="<?php echo Url::to(['site/contact']); ?>">Contactos</a></li>
-                            <li><a class="active" href="#">View</a></li>
                         </ul>
 
                         <a href="#" class="open-close-menu" style="display: none;"><i class="fa fa-align-justify"></i></a>
@@ -68,10 +69,10 @@ $blogComentario = Comentario::find()->select('*')->from('comentario')->where(['i
 
         <!---banner-section
             ================================================== -->
-        <section class="page-banner-section blog-banner">
+        <section class="page-banner-section view-banner">
             <div class="container">
                 <div class="page-banner-box">
-                    <h1>Blog</h1>
+                    <h1>View</h1>
                 </div>
             </div>
         </section>
@@ -127,7 +128,7 @@ $blogComentario = Comentario::find()->select('*')->from('comentario')->where(['i
                                         <li>
                                             <?= Html::img(Url::to(Yii::getAlias('@ImgUrl'). '/'.$post['post']))?> <!-- Pegar imgem do banco -->
                                             <div class="side-content">
-                                                <h2><a href="<?= Url::to(['blog/view', 'id' => $post['id']]) ?>"><?php echo substr($post['nome'], 0, 100) ?></a></h2>
+                                                <h2><a href="<?= Url::to(['blog/view', 'id' => $post['id']]) ?>"><?php echo substr($post['nomeB'], 0, 100) ?></a></h2>
                                                 <span><?php echo $post['data_blog'] ?></span>
                                             </div>
                                         </li>
@@ -176,7 +177,7 @@ $blogComentario = Comentario::find()->select('*')->from('comentario')->where(['i
                                                 <li><?php echo $post['data_blog'] ?></li>&nbsp;&nbsp;<br>
                                                 <li><a href="#comentario" ><?php print_r($contarComent) ?> Comentarios</a></li><!-- #comentario leva ate a pagina de comentario isto e efetuar link na mesma pagina com aco -->
                                             </ul>
-                                            <h2><?php echo $post['nome'] ?></h2><!-- Ver todos os dados do blog numa view ta certo kkk -->
+                                            <h2><?php echo $post['nomeB'] ?></h2><!-- Ver todos os dados do blog numa view ta certo kkk -->
                                             <p><?php echo $post['descricao'] ?></p>
                                         </div>
                                 </div><!-- Fim de mostar imagem -->
@@ -201,7 +202,7 @@ $blogComentario = Comentario::find()->select('*')->from('comentario')->where(['i
                 </div>
         </section>
         <!-- blog section -->
-
+        <div class="#fechar"></div>
     </div>
     <!--  Container -->
 

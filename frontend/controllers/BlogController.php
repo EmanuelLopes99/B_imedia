@@ -64,6 +64,8 @@ class BlogController extends Controller
         if($comentario->load(Yii::$app->request->post())){
             $comentario->id_blog = $blogs['id'];
             $comentario->save();
+
+            return $this->refresh();
         }
 
         return $this->render('view', [

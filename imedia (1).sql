@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 25-Jul-2018 às 21:21
+-- Generation Time: 31-Jul-2018 às 15:04
 -- Versão do servidor: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -19,29 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `imedia`
 --
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `abc`
---
-
-CREATE TABLE `abc` (
-  `id` int(11) NOT NULL,
-  `missao` text NOT NULL,
-  `visao` text NOT NULL,
-  `valores` text NOT NULL,
-  `endereco` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `telefone` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `abc`
---
-
-INSERT INTO `abc` (`id`, `missao`, `visao`, `valores`, `endereco`, `email`, `telefone`) VALUES
-(1, 'sssss', 'sssss', 'ssss', 'sssss', 'xxxx', '10');
 
 -- --------------------------------------------------------
 
@@ -64,7 +41,7 @@ CREATE TABLE `about` (
 
 CREATE TABLE `blog` (
   `id` int(11) NOT NULL,
-  `nome` varchar(200) NOT NULL,
+  `nomeB` varchar(200) NOT NULL,
   `categoria` varchar(100) NOT NULL,
   `descricao` text NOT NULL,
   `post` varchar(255) NOT NULL,
@@ -75,9 +52,8 @@ CREATE TABLE `blog` (
 -- Extraindo dados da tabela `blog`
 --
 
-INSERT INTO `blog` (`id`, `nome`, `categoria`, `descricao`, `post`, `data_blog`) VALUES
-(2, 'Yii Framework e Documentação Offline', 'Yii 2.0', 'Yii é um projeto de código aberto lançado sob os termos da Licença BSD . \r\nIsso significa que você pode usar o \r\nYii gratuitamente para desenvolver aplicativos da Web de código aberto ou proprietários.\r\nExistem duas maneiras de instalar o Yii: usando o Composer ou baixando um modelo de aplicativo.\r\n É altamente recomendável que você use o Composer.\r\nSe você ainda não tiver o Composer instalado, poderá instalá-lo seguindo as instruções no site do Composer .', 'Capturar.png', '2018-07-25 17:38:54'),
-(3, 'Melhor Atileta', 'Desporto', 'Web de código aberto ou proprietários. Existem duas maneiras de instalar o Yii: usando o Composer ou baixando um modelo de aplicativo. É altamente recomendável que você use o Composer. Se você ainda não tiver o Composer instalado, poderá instalá-lo seguindo as instruções no site do Composer .', 'video.png', '2018-07-25 17:41:25');
+INSERT INTO `blog` (`id`, `nomeB`, `categoria`, `descricao`, `post`, `data_blog`) VALUES
+(2, 'Yii Framework e Documentação Offline', 'Yii 2.0', 'Yii é um projeto de código aberto lançado sob os termos da Licença BSD . \r\nIsso significa que você pode usar o \r\nYii gratuitamente para desenvolver aplicativos da Web de código aberto ou proprietários.\r\nExistem duas maneiras de instalar o Yii: usando o Composer ou baixando um modelo de aplicativo.\r\n É altamente recomendável que você use o Composer.\r\nSe você ainda não tiver o Composer instalado, poderá instalá-lo seguindo as instruções no site do Composer .', 'Capturar.png', '2018-07-25 17:38:54');
 
 -- --------------------------------------------------------
 
@@ -98,10 +74,7 @@ CREATE TABLE `comentario` (
 --
 
 INSERT INTO `comentario` (`id`, `nome`, `comentario`, `data`, `id_blog`) VALUES
-(1, 'lopes', 'xxxxxxxxxxxxxx', '2018-07-25 19:12:27', 3),
-(3, 'Lopes Borges', 'E muito bom gostei muito mesmo', '2018-07-25 19:12:41', 2),
-(4, 'Emanuel', 'Mau post....', '2018-07-25 19:12:50', 3),
-(5, 'Emanuel Antonio', 'Bom post valeu cara', '2018-07-25 19:13:00', 3);
+(1, 'lopes', 'xxxxxxxxxxxxxx', '2018-07-25 19:12:27', 3);
 
 -- --------------------------------------------------------
 
@@ -111,10 +84,23 @@ INSERT INTO `comentario` (`id`, `nome`, `comentario`, `data`, `id_blog`) VALUES
 
 CREATE TABLE `contact` (
   `id` int(11) NOT NULL,
-  `nome` varchar(200) NOT NULL,
+  `endereco` varchar(200) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `assunto` varchar(100) NOT NULL,
-  `sms` text NOT NULL
+  `telefone` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `design`
+--
+
+CREATE TABLE `design` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(200) DEFAULT NULL,
+  `descricao` text,
+  `imgD` varchar(255) DEFAULT NULL,
+  `data` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -133,23 +119,65 @@ CREATE TABLE `equipe` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `fotografia`
+--
+
+CREATE TABLE `fotografia` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(200) DEFAULT NULL,
+  `descricao` text,
+  `image` varchar(255) DEFAULT NULL,
+  `data` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `galeria`
 --
 
 CREATE TABLE `galeria` (
-  `id` int(11) NOT NULL,
-  `fotografia` varchar(255) NOT NULL,
-  `videos` varchar(255) NOT NULL,
-  `projetos` varchar(255) NOT NULL
+  `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `galeria`
 --
 
-INSERT INTO `galeria` (`id`, `fotografia`, `videos`, `projetos`) VALUES
-(2, 'projeto.png', 'projeto.png', 'projeto.png'),
-(3, 'Capturar.png', 'projeto.png', 'video.png');
+INSERT INTO `galeria` (`id`) VALUES
+(2),
+(3);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `home`
+--
+
+CREATE TABLE `home` (
+  `id` int(11) NOT NULL,
+  `missao` text NOT NULL,
+  `visao` text NOT NULL,
+  `valores` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `homelogo`
+--
+
+CREATE TABLE `homelogo` (
+  `id` int(11) NOT NULL,
+  `logos` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `homelogo`
+--
+
+INSERT INTO `homelogo` (`id`, `logos`) VALUES
+(1, 'logo-frut&pao1.png');
 
 -- --------------------------------------------------------
 
@@ -160,8 +188,16 @@ INSERT INTO `galeria` (`id`, `fotografia`, `videos`, `projetos`) VALUES
 CREATE TABLE `noticias` (
   `id` int(11) NOT NULL,
   `titulo` varchar(200) NOT NULL,
-  `descricao` text NOT NULL
+  `descricao` text NOT NULL,
+  `data` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `noticias`
+--
+
+INSERT INTO `noticias` (`id`, `titulo`, `descricao`, `data`) VALUES
+(1, 'Não obstrutivo', 'Todos os recursos presentes no Node.js e também a maioria das bibliotecas feitas para ele adotaram um padrão não obstrutivo de escrever código, isso quer dizer que em Node.js você geralmente vai conseguir estruturar seu código de uma maneira que operações que não dependem de nada que está sendo executado possam ser executadas de forma independente.\r\n\r\nPara mostrar um pouco como isso funciona, vamos um programa que escreve duas frases no terminal, porém uma dessas frases precisa ser carregada da memória antes de ser impressa.\r\n\r\nvar frase;', '2018-07-31 13:02:13');
 
 -- --------------------------------------------------------
 
@@ -224,15 +260,23 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `created_at`, `updated_at`) VALUES
 (6, 'lopes', 'h_QjbS_zEiavn-FiJMWXT81qSwxebvLf', '$2y$13$NMS/LXN7mMyOKNYsQMxiXekW.nGTbH2EWKevIZ7cmgIL.NbK06bQm', NULL, 'djo@lop.com', '10', 1532453426, 1532453426);
 
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `video`
+--
+
+CREATE TABLE `video` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(200) DEFAULT NULL,
+  `descricao` text,
+  `video` varchar(255) DEFAULT NULL,
+  `data` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `abc`
---
-ALTER TABLE `abc`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `about`
@@ -260,15 +304,39 @@ ALTER TABLE `contact`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `design`
+--
+ALTER TABLE `design`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `equipe`
 --
 ALTER TABLE `equipe`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `fotografia`
+--
+ALTER TABLE `fotografia`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `galeria`
 --
 ALTER TABLE `galeria`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `home`
+--
+ALTER TABLE `home`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `homelogo`
+--
+ALTER TABLE `homelogo`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -302,14 +370,15 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `video`
+--
+ALTER TABLE `video`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
---
--- AUTO_INCREMENT for table `abc`
---
-ALTER TABLE `abc`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `about`
 --
@@ -331,9 +400,19 @@ ALTER TABLE `comentario`
 ALTER TABLE `contact`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `design`
+--
+ALTER TABLE `design`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `equipe`
 --
 ALTER TABLE `equipe`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `fotografia`
+--
+ALTER TABLE `fotografia`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `galeria`
@@ -341,10 +420,20 @@ ALTER TABLE `equipe`
 ALTER TABLE `galeria`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
+-- AUTO_INCREMENT for table `home`
+--
+ALTER TABLE `home`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `homelogo`
+--
+ALTER TABLE `homelogo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `noticias`
 --
 ALTER TABLE `noticias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `outros`
 --
@@ -360,6 +449,11 @@ ALTER TABLE `servicos`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `video`
+--
+ALTER TABLE `video`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

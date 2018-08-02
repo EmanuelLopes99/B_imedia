@@ -29,7 +29,7 @@ AppAsset::register($this);
     
 
     <div class="container" style="margin-top: 120px">
-        <div class=" col-md-8 col-md-offset-4 ">
+        <div class="col-md-offset-4 col-md-4">
             <?= Alert::widget() ?>
             <?= $content ?>
         </div>

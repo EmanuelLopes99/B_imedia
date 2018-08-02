@@ -78,7 +78,7 @@ class VideoController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             //$model->save();
             $images= UploadedFile::getInstance($model, 'video');
-            $ImgName = $images->baseName;
+            $ImgName = $images->baseName. '.' .$images->extension;
             $images->saveAs(Yii::getAlias('@ImgPath'). '/' .$ImgName);
             $model->video = $ImgName;
             $model->save();
@@ -105,7 +105,7 @@ class VideoController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             //$model->save();
             $images= UploadedFile::getInstance($model, 'video');
-            $ImgName = $images->baseName;
+            $ImgName = $images->baseName. '.' .$images->extension;
             $images->saveAs(Yii::getAlias('@ImgPath'). '/' .$ImgName);
             $model->video = $ImgName;
             $model->save();

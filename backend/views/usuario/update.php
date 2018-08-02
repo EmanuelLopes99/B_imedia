@@ -3,16 +3,16 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\User */
+/* @var $model app\models\Usuario */
 
-$this->title = 'Update User: {nameAttribute}';
-$this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
+$this->title = 'Update Usuario: {nameAttribute}';
+$this->params['breadcrumbs'][] = ['label' => 'Usuarios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="panel panel-default">
     <div class="list-group-item active">
-        <h3 class="panel-title">Usuarios</h3>
+        <h3 class="panel-title">Usuario</h3>
     </div>
         <div class="panel-body">
 

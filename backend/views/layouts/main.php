@@ -5,6 +5,7 @@
 
 use backend\assets\AppAsset;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
@@ -15,7 +16,7 @@ AppAsset::register($this);
 //contar total de registro no banco
 $querys = new \yii\db\Query();
 $contarPost = $querys->select('*')->from('blog')->count();
-$contarUsuario = $querys->select('*')->from('user')->count();
+$contarUsuario = $querys->select('*')->from('usuario')->count();
 $contarComentarios = $querys->select('*')->from('comentario')->count();//fim da consulta
 ?>
 
@@ -124,7 +125,7 @@ $contarComentarios = $querys->select('*')->from('comentario')->count();//fim da 
                  <a href="index.php?r=comentario/index" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
                    Comentarios <span class="badge"><?php print_r($contarComentarios) ?></span>
                  </a>
-                  <a href="index.php?r=user/index" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                  <a href="index.php?r=usuario/index" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                    Usuarios <span class="badge"><?php print_r($contarUsuario) ?></span>
                  </a>
               </div>

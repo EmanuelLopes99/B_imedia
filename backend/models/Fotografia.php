@@ -46,7 +46,7 @@ class Fotografia extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'nome' => 'Nome',
-            'descricao' => 'Descricao',
+            'descricao' => 'Descrição',
             'image' => 'Image',
             'data' => 'Data',
         ];

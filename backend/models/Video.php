@@ -46,7 +46,7 @@ class Video extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'nome' => 'Nome',
-            'descricao' => 'Descricao',
+            'descricao' => 'Descrição',
             'video' => 'Video',
             'data' => 'Data',
         ];

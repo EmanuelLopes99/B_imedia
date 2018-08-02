@@ -147,7 +147,7 @@ class SiteController extends Controller
      * Signs user up.
      *
      * @return mixed
-     */
+     */ 
     public function actionSignup()
     {
         $model = new SignupForm();
@@ -190,7 +190,7 @@ class SiteController extends Controller
     /**
      * Resets password.
      *
-     * @param string $token
+     * @param string $token 
      * @return mixed
      * @throws BadRequestHttpException
      */

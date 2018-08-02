@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\User;
+use app\models\Usuario;
 
 /**
- * UserSearch represents the model behind the search form of `app\models\User`.
+ * UsuarioSearch represents the model behind the search form of `app\models\Usuario`.
  */
-class UserSearch extends User
+class UsuarioSearch extends Usuario
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class UserSearch extends User
     public function rules()
     {
         return [
-            [['id', 'created_at', 'updated_at'], 'integer'],
-            [['username', 'auth_key', 'password_hash', 'password_reset_token', 'email', 'status'], 'safe'],
+            [['id', 'auth_key', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['username', 'email', 'password_hash', 'password_reset_token'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class UserSearch extends User
      */
     public function search($params)
     {
-        $query = User::find();
+        $query = Usuario::find();
 
         // add conditions that should always apply here
 
@@ -60,16 +60,16 @@ class UserSearch extends User
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'auth_key' => $this->auth_key,
+            'status' => $this->status,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'username', $this->username])
-            ->andFilterWhere(['like', 'auth_key', $this->auth_key])
-            ->andFilterWhere(['like', 'password_hash', $this->password_hash])
-            ->andFilterWhere(['like', 'password_reset_token', $this->password_reset_token])
             ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'status', $this->status]);
+            ->andFilterWhere(['like', 'password_hash', $this->password_hash])
+            ->andFilterWhere(['like', 'password_reset_token', $this->password_reset_token]);
 
         return $dataProvider;
     }

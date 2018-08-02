@@ -41,7 +41,7 @@ class Noticias extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'titulo' => 'Titulo',
-            'descricao' => 'Descricao',
+            'descricao' => 'Descrição',
         ];
     }
 }

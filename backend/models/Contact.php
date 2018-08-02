@@ -42,8 +42,8 @@ class Contact extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'endereco' => 'Endereco',
-            'email' => 'Email',
+            'endereco' => 'Endereço',
+            'email' => 'E-mail',
             'telefone' => 'Telefone',
         ];
     }

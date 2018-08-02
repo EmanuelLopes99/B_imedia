@@ -19,6 +19,8 @@ use yii\models\Blog;
     <?= $form->field($model, 'comentario')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'id_blog')->textInput(
+    	ArrayHelper::map(Blog::find()->all(),'id','nomeB'),
+        ['prompt'=>'-- Selecione Post --']
     ) ?>
 
     <div class="form-group">

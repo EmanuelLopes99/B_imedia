@@ -40,8 +40,8 @@ class Home extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'missao' => 'Missao',
-            'visao' => 'Visao',
+            'missao' => 'Missão',
+            'visao' => 'Visão',
             'valores' => 'Valores',
         ];
     }

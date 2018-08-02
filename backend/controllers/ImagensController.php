@@ -78,18 +78,18 @@ class ImagensController extends Controller
 
         if (Yii::$app->request->isPost) {
             $imagem= UploadedFile::getInstance($model, 'images');
-            if($imagem && $model->validate()){
+            /*if($imagem && $model->validate()){
                 foreach ($imagem as $file) {
                     $carregar = new Imagens();
                     if($carregar->save()){
                          $file->saveAs($carregar->getPath());
                     }
                 }
-            }
-           /* $ImgName = $imagem->baseName. '.' .$imagem->extension;
+            }*/
+            $ImgName = $imagem->baseName. '.' .$imagem->extension;
             $imagem->saveAs(Yii::getAlias('@ImgPath'). '/' .$ImgName);
             $model->images = $ImgName;
-            $model->save();*/
+            $model->save();
 
             return $this->redirect(['view', 'id' => $model->id]);
         }

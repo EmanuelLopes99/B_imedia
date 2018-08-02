@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\UserSearch */
+/* @var $model app\models\UsuarioSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="user-search">
+<div class="usuario-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -19,13 +19,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'username') ?>
 
-    <?= $form->field($model, 'auth_key') ?>
+    <?= $form->field($model, 'email') ?>
 
     <?= $form->field($model, 'password_hash') ?>
 
     <?= $form->field($model, 'password_reset_token') ?>
 
-    <?php // echo $form->field($model, 'email') ?>
+    <?php // echo $form->field($model, 'auth_key') ?>
 
     <?php // echo $form->field($model, 'status') ?>
 

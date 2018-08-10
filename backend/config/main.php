@@ -8,13 +8,16 @@ $params = array_merge(
 
 return [
     'id' => 'app-backend',
+    'language' => 'pt_BR',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
+   //'homeUrl' => '/B_imedia/admin',
     'modules' => [],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
+            //'baseUrl' => '/B_imedia/admin',
         ],
         'user' => [
             'identityClass' => 'common\models\User',
@@ -37,14 +40,14 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
-        'urlManager' => [
+        /*'urlManager' => [
+            'baseUrl' => '/B_imedia/admin',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
-        ],
-        */
+        ],*/
+        
     ],
     'params' => $params,
 ];

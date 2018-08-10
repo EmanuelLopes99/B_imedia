@@ -11,7 +11,7 @@ $this->title = $model->id;
 $sobABC = Home::find()->select('*')->from('home')->orderBy('id DESC')->limit(1)->all();
 $blogcategoria = Blog::find()->select('*')->from('blog')->limit(3)->all();
 $blogpost = Blog::find()->select('*')->from('blog')->orderBy('id DESC')->limit(4)->all();
-$galeriaVideo = Design::find()->select('*')->from('design')->orderBy('id DESC')->all();
+$galeriaDesing = Design::find()->select('*')->from('design')->orderBy('id DESC')->all();
 ?>
 <?php $this->beginPage() ?>
 <!doctype html>
@@ -145,12 +145,12 @@ $galeriaVideo = Design::find()->select('*')->from('design')->orderBy('id DESC')-
 
                     <div class="col-lg-8">
                         <div class="blog-box">
-                            <?php foreach ($galeriaVideo  as $video): ?>
+                            <?php foreach ($galeriaDesing  as $proj): ?>
                                 <div class="blog-post">
-                                    <?= Html::img(Url::to(Yii::getAlias('@ImgUrl').'/'.$video['imgD'])) ?>
+                                    <?= Html::img(Url::to(Yii::getAlias('@ImgUrl').'/'.$proj['imgD'])) ?>
                                     <div class="post-content">
-                                    <h2><?php echo $post['nomeB']?></a></h2>
-                                    <p><?php echo $post['descricao']?></p>
+                                    <h2><?php echo $proj['nome']?></a></h2>
+                                    <p><?php echo $proj['descricao']?></p>
                                     </div>
                                 </div>
                             <?php endforeach ?>

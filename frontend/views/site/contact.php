@@ -114,7 +114,7 @@ AppAsset::register($this);
                                         </li>
                                         <li>
                                             <i class="fa fa-phone"></i>
-                                            <?php echo $contact['telefone'] ?>
+                                            <?php echo ('(+238) '), $contact['telefone'] ?>
                                         </li>
                                         <li>
                                             <i class="fa fa-envelope"></i>

@@ -20,7 +20,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
  
     <p>
-        <?= Html::button('<i class="glyphicon glyphicon-plus"></i> Comentario', ['value' => Url::to('index.php?r=comentario/create'),'class' => 'btn btn-primary', 'id' => 'modalButton']) ?>
+        <!--?= Html::button('<i class="glyphicon glyphicon-plus"></i> Comentario', ['value' => Url::to('index.php?r=comentario/create'),'class' => 'btn btn-primary', 'id' => 'modalButton']) ?-->
+         <?= Html::a('<i class="glyphicon glyphicon-plus"></i> Comentario', ['create'], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?php 

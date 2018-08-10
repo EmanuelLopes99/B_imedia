@@ -78,12 +78,14 @@ class FotografiaController extends Controller
        if ($model->load(Yii::$app->request->post())) {
             //$model->save();
             $images= UploadedFile::getInstance($model, 'image');
-            $ImgName = $images->baseName. '.' .$images->extension;
-            $images->saveAs(Yii::getAlias('@ImgPath'). '/' .$ImgName);
-            $model->image = $ImgName;
-            $model->save();
+            if($images != null){
+                $ImgName = $images->baseName. '.' .$images->extension;
+                $images->saveAs(Yii::getAlias('@webroot/upload'). '/' .$ImgName);
+                $model->image = $ImgName;
+                $model->save();
 
-            return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
 
         return $this->render('create', [
@@ -105,12 +107,14 @@ class FotografiaController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             //$model->save();
             $images= UploadedFile::getInstance($model, 'image');
-            $ImgName = $images->baseName. '.' .$images->extension;
-            $images->saveAs(Yii::getAlias('@ImgPath'). '/' .$ImgName);
-            $model->image = $ImgName;
-            $model->save();
-            
-            return $this->redirect(['view', 'id' => $model->id]);
+            if($images != null){
+                $ImgName = $images->baseName. '.' .$images->extension;
+                $images->saveAs(Yii::getAlias('@webroot/upload'). '/' .$ImgName);
+                $model->image = $ImgName;
+                $model->save();
+
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
 
         return $this->render('update', [

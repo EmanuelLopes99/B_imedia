@@ -28,7 +28,7 @@ class Imagens extends \yii\db\ActiveRecord
         return [
             [['images'], 'required'],
             [['images'], 'string', 'max' => 255],
-            [['images'],'file','extensions' => 'png,jpg,gif', 'maxFiles' => 5],
+            [['images'],'file','extensions' => 'png,jpg,gif', 'maxFiles' => 5, 'skipOnEmpty' => false],
         ];
     }
 

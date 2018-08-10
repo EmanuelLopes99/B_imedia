@@ -72,7 +72,7 @@ if($subscricao->load(Yii::$app->request->post())){
                                 <h2>Nós ABC</h2>
                                     <?php foreach ($sobContact  as $abc): ?>
                                         <p><?php echo $abc['endereco'] ?> <br>
-                                    <?php echo $abc['telefone'] ?></p>
+                                    <?php echo('(+238) '),  $abc['telefone'] ?></p>
                                 <?php endforeach ?>
                             </div><!-- Fim de sobre ABC -->
 

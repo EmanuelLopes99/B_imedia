@@ -76,22 +76,28 @@ class ImagensController extends Controller
     {
         $model = new Imagens();
 
-        if (Yii::$app->request->isPost) {
-            $imagem= UploadedFile::getInstance($model, 'images');
-            /*if($imagem && $model->validate()){
-                foreach ($imagem as $file) {
-                    $carregar = new Imagens();
-                    if($carregar->save()){
-                         $file->saveAs($carregar->getPath());
-                    }
+        if ($model->load(Yii::$app->request->post())) {
+            $model->images = UploadedFile::getInstance($model, 'images');
+            if($model->images && $model->validate()){
+                if(!file_exists(Url::to(Yii::getAlias('webroot/upload')))){
+                    mkdir(Url::to(Yii::getAlias('webroot/upload'), 0777, true));
                 }
-            }*/
-            $ImgName = $imagem->baseName. '.' .$imagem->extension;
+                $path = Url::to(Yii::getAlias('@webroot/upload'));
+                    foreach ($model->images as $img) {
+                        $upload = new Imagens();
+                        $upload->images = time().rand(100, 999).'.'.$img->extension;
+                        if($upload->save(false)){
+                            $img->saveAs($path.$upload->images);
+                        }
+                    }
+                     return $this->redirect(['view', 'id' => $model->id]);
+            }
+                        
+            /*$ImgName = $imagem->baseName. '.' .$imagem->extension;
             $imagem->saveAs(Yii::getAlias('@ImgPath'). '/' .$ImgName);
             $model->images = $ImgName;
-            $model->save();
+            $model->save();*/
 
-            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -112,10 +118,12 @@ class ImagensController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             $imagem= UploadedFile::getInstance($model, 'images');
-            $ImgName = $imagem->baseName. '.' .$imagem->extension;
-            $imagem->saveAs(Yii::getAlias('@ImgPath'). '/' .$ImgName);
-            $model->images = $ImgName;
-            $model->save();
+            if($imagem != null){
+                $ImgName = $imagem->baseName. '.' .$imagem->extension;
+                $imagem->saveAs(Yii::getAlias('@webroot/upload'). '/' .$ImgName);
+                $model->images = $ImgName;
+                $model->save();
+            }
 
             return $this->redirect(['view', 'id' => $model->id]);
         }

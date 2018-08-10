@@ -18,6 +18,8 @@ class Fotografia extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public $url;
+
     public static function tableName()
     {
         return 'fotografia';

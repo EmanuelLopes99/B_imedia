@@ -79,12 +79,14 @@ class HomelogoController extends Controller
          if ($model->load(Yii::$app->request->post())) {
             //$model->save();
             $images= UploadedFile::getInstance($model, 'logos');
-            $ImgName = $images->baseName. '.' .$images->extension;
-            $images->saveAs(Yii::getAlias('@ImgPath'). '/' .$ImgName);
-            $model->logos = $ImgName;
-            $model->save();
+            if($images != null){
+                $ImgName = $images->baseName. '.' .$images->extension;
+                $images->saveAs(Yii::getAlias('@webroot/upload'). '/' .$ImgName);
+                $model->logos = $ImgName;
+                $model->save();
 
-            return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['view', 'id' => $model->id]);
+            }            
         }
 
         return $this->render('create', [
@@ -105,13 +107,14 @@ class HomelogoController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             //$model->save();
-            $images= UploadedFile::getInstance($model, 'logos');
-            $ImgName = $images->baseName. '.' .$images->extension;
-            $images->saveAs(Yii::getAlias('@ImgPath'). '/' .$ImgName);
-            $model->logos = $ImgName;
-            $model->save();
-            
-            return $this->redirect(['view', 'id' => $model->id]);
+            if($images != null){
+                $ImgName = $images->baseName. '.' .$images->extension;
+                $images->saveAs(Yii::getAlias('@webroot/upload'). '/' .$ImgName);
+                $model->logos = $ImgName;
+                $model->save();
+
+                return $this->redirect(['view', 'id' => $model->id]);
+            }    
         }
 
         return $this->render('update', [

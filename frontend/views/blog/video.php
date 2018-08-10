@@ -146,12 +146,12 @@ $galeriaVideo = Video::find()->select('*')->from('video')->orderBy('id DESC')->a
 
                     <div class="col-lg-8">
                         <div class="blog-box">
-                            <?php foreach ($galeriaVideo  as $video): ?>
+                            <?php foreach ($galeriaVideo  as $videos): ?>
                                 <div class="blog-post">
-                                    <??= Html::img(Url::to(Yii::getAlias('@ImgUrl').'/'.$video[''] ))>
+                                    <??= Html::img(Url::to(Yii::getAlias('@ImgUrl').'/'.$videos[''] ))>
                                     <div class="post-content">
-                                    <h2><?php echo $post['nomeB']?></a></h2>
-                                    <p><?php echo $post['descricao']?></p>
+                                    <h2><?php echo $videos['nome']?></a></h2>
+                                    <p><?php echo $videos['descricao']?></p>
                                     </div>
                                 </div>
                             <?php endforeach ?>

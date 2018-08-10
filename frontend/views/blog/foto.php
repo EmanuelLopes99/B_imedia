@@ -149,8 +149,8 @@ $galeriaFoto = Fotografia::find()->select('*')->from('fotografia')->orderBy('id 
                                 <div class="blog-post">
                                     <?= Html::img(Url::to(Yii::getAlias('@ImgUrl').'/'.$foto['image'])) ?>
                                     <div class="post-content">
-                                    <h2><?php echo $post['nomeB']?></a></h2>
-                                    <p><?php echo $post['descricao']?></p>
+                                    <h2><?php echo $foto['nome']?></a></h2>
+                                    <p><?php echo $foto['descricao']?></p>
                                     </div>
                                 </div>
                             <?php endforeach ?>

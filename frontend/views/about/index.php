@@ -134,7 +134,7 @@ $sobImg = Imagens::find()->select('*')->from('imagens')->orderBy('id DESC')->lim
                 <div class="title-section">
                     <h1>Conheça nossa equipa</h1>
                         <?php foreach ($SobOutros as $equipe): ?>
-                            <p><?php echo $equipe['desc_equipe'] ?></p>
+                            <p style="text-align: left;"><?php echo $equipe['desc_equipe'] ?></p>
                         <?php endforeach ?>
                 </div>
 

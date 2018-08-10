@@ -80,7 +80,7 @@ class BlogController extends Controller
             //$model->save();
             $images= UploadedFile::getInstance($model, 'post');
             $ImgName = $images->baseName. '.' .$images->extension;
-            $images->saveAs(Yii::getAlias('@ImgPath'). '/' .$ImgName);
+            $images->saveAs(Yii::getAlias('@webroot/upload'). '/' .$ImgName);
             $model->post = $ImgName;
             $model->save();
             
@@ -106,7 +106,7 @@ class BlogController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             $images= UploadedFile::getInstance($model, 'post');
             $ImgName = $images->baseName. '.' .$images->extension;
-            $images->saveAs(Yii::getAlias('@ImgPath'). '/' .$ImgName);
+            $images->saveAs(Yii::getAlias('@webroot/upload'). '/' .$ImgName);
             $model->post = $ImgName;
             $model->save();
 

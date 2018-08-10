@@ -79,7 +79,7 @@ class ServicosController extends Controller
             //$model->save();
             $images= UploadedFile::getInstance($model, 'icon');
             $ImgName = $images->baseName. '.' .$images->extension;
-            $images->saveAs(Yii::getAlias('@ImgPath'). '/' .$ImgName);
+            $images->saveAs(Yii::getAlias('@webroot/upload'). '/' .$ImgName);
             $model->icon = $ImgName;
             $model->save();
 
@@ -106,7 +106,7 @@ class ServicosController extends Controller
             //$model->save();
             $images= UploadedFile::getInstance($model, 'icon');
             $ImgName = $images->baseName. '.' .$images->extension;
-            $images->saveAs(Yii::getAlias('@ImgPath'). '/' .$ImgName);
+            $images->saveAs(Yii::getAlias('@webroot/upload'). '/' .$ImgName);
             $model->icon = $ImgName;
             $model->save();
             

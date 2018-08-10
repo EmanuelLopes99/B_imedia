@@ -153,6 +153,7 @@ $contarComentarios = $querys->select('*')->from('comentario')->count();//fim da 
     </section>
 </div><!-- fim de warp -->
 
+<!-- footeer -->
 <footer class="footer">
     <div class="container">
         <p class="m-0 text-white"><a href="index.php"> Police Privacy </a> copyright &copy; EME MARKETING <?= date ('Y') ?><a href="index.php"> Use Terms </a></p>

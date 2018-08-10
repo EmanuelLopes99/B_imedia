@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
-use yii\models\Blog;
+use app\models\Blog;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Comentario */
@@ -18,7 +18,7 @@ use yii\models\Blog;
 
     <?= $form->field($model, 'comentario')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'id_blog')->textInput(
+    <?= $form->field($model, 'id_blog')->dropDownList(
     	ArrayHelper::map(Blog::find()->all(),'id','nomeB'),
         ['prompt'=>'-- Selecione Post --']
     ) ?>

@@ -62,10 +62,14 @@ class BlogController extends Controller
         $comentario = new Comentario();
 
         if($comentario->load(Yii::$app->request->post())){
-            $comentario->id_blog = $blogs['id'];
-            $comentario->save();
+            if($comentario != null){
+                $comentario->id_blog = $blogs['id'];
+                $comentario->save();
 
-            return $this->refresh();
+                return $this->refresh();
+            }else{
+                echo('Campos devem ser preenchido obrigatorio');
+            }
         }
 
         return $this->render('view', [

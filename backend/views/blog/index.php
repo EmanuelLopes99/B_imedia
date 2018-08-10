@@ -59,3 +59,5 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 </div></div>
+
+ <!-- URL::to(Yii::$app->params['blog'].$post['post']  -->

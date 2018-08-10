@@ -80,7 +80,7 @@ class EquipeController extends Controller
             //$model->save();
             $images= UploadedFile::getInstance($model, 'foto');
             $ImgName = $images->baseName. '.' .$images->extension;
-            $images->saveAs(Yii::getAlias('@ImgPath'). '/' .$ImgName);
+            $images->saveAs(Yii::getAlias('@webroot/upload'). '/' .$ImgName);
             $model->foto = $ImgName;
             $model->save();
             
@@ -103,7 +103,14 @@ class EquipeController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            //$model->save();
+            $images= UploadedFile::getInstance($model, 'foto');
+            $ImgName = $images->baseName. '.' .$images->extension;
+            $images->saveAs(Yii::getAlias('@webroot/upload'). '/' .$ImgName);
+            $model->foto = $ImgName;
+            $model->save();
+            
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

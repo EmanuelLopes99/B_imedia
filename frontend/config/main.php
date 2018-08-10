@@ -8,13 +8,24 @@ $params = array_merge(
 
 return [
     'id' => 'app-frontend',
+    'language' => 'pt_BR',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
+            'baseUrl' => '',
         ],
+       /* 'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'rules' => [
+                '' => 'site/index',
+                '<action>'=>'site/<action>',
+            ],
+        ],*/
+
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,

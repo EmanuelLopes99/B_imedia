@@ -317,7 +317,7 @@ $logoHome = Homelogo::find()->select('*')->from('homelogo')->orderBy('id DESC')-
                         <?php foreach ($sobABC as $missao): ?>
                         <div class="post">
                             <h2>Nossa Missão</h2>
-                            <p style="text-align:center;" ><?php echo substr($missao['missao'], 0, 350) ?></p>
+                            <p style="text-align:left;" ><?php echo substr($missao['missao'], 0, 350) ?></p>
                             <?php echo Html::img('@web/upload/others/about-img.jpg', ['style' => 'width:550px']) ?>
                             <h2></h2>
                             <a href="#"></a>
@@ -329,7 +329,7 @@ $logoHome = Homelogo::find()->select('*')->from('homelogo')->orderBy('id DESC')-
                          <?php foreach ($sobABC as $visao): ?>
                             <div class="post">
                                 <h2>A nossa Visão</h2>
-                                <p style="text-align:center;"><?php echo substr($visao['visao'],0, 200) ?>
+                                <p style="text-align:left;"><?php echo substr($visao['visao'],0, 200) ?>
                                     <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
                                 <?php echo Html::img('@web/upload/others/5.jpg') ?>
                                 <h2></h2>
@@ -342,7 +342,7 @@ $logoHome = Homelogo::find()->select('*')->from('homelogo')->orderBy('id DESC')-
                          <?php foreach ($sobABC as $valore): ?>
                         <div class="post">
                             <h2>Valores</h2>
-                            <p style="text-align:center;"><?php echo substr($valore['valores'], 0, 200) ?></p>
+                            <p style="text-align:left;"><?php echo substr($valore['valores'], 0, 200) ?></p>
                             <img src="upload/others/3.jpg" alt="">
                             <h2></h2>
                             <a href="#"></a>

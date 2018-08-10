@@ -108,7 +108,7 @@ $servicos = Servicos::find()->select('*')->from('servicos')->orderBy('id DESC')-
                 <div class="center-area" >
                     <h1>Nós fornecemos melhores soluções</h1>
                     <?php foreach ($outrosDados as $soluc): ?>
-                        <p style="text-align: center" > <?php echo $soluc['solucoes'] ?></p>
+                        <p style="text-align: left;" > <?php echo $soluc['solucoes'] ?></p>
                         <a class="button-one" href="<?php echo Url::to(['contacto/index']); ?>">Contacte-nos</a>
                     <?php endforeach ?>
                 </div>
@@ -141,10 +141,9 @@ $servicos = Servicos::find()->select('*')->from('servicos')->orderBy('id DESC')-
                 </div>
             </div>
         </section>
-        <!--      -->
 
-        <!--
-            ================================================== -->
+       
+            <!-- ================================================== --> 
         <section class="what-we-do2">
             <?php echo Html::img(Url::to('@web/upload/others/img1.jpg')) ?>
             <div class="what-we-do-upper">
@@ -155,13 +154,7 @@ $servicos = Servicos::find()->select('*')->from('servicos')->orderBy('id DESC')-
                                 <div class="inner-content">
                                     <h1>Explorar. Creatividade.</h1>
                                     <?php foreach ($outrosDados as $criat): ?>
-                                        <p><?php echo $criat['criatividade'] ?> </p>
-                                    <!-- <ul>
-                                        <li>Nunc dignissim risus id metus.</li>
-                                        <li>Cras ornare tristique elit.</li>
-                                        <li>Vivamus vestibulum nulla nec ante.</li>
-                                        <li>Praesent placerat risus quis eros.</li>
-                                    </ul> -->
+                                        <p style="text-align: left;"><?php echo $criat['criatividade'] ?> </p>
                                     <?php endforeach ?>
                                 </div>
                             </div>

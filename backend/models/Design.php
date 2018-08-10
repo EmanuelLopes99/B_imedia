@@ -47,7 +47,7 @@ class Design extends \yii\db\ActiveRecord
             'id' => 'ID',
             'nome' => 'Nome',
             'descricao' => 'Descrição',
-            'imgD' => 'Img D',
+            'imgD' => 'Imagem',
             'data' => 'Data',
         ];
     }
